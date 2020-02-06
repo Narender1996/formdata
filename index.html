@@ -20,18 +20,41 @@
 <body>
 <div class="container">
 <h1>sign up form</h1>
-<form id="form" method="POST" action="http://localhost:3000/form">
+<form id="form" method="POST" action=>
     <span>EMAIL</span>
-    <input type="email" placeholder="email" id="emailid"><br>
+    <input type="email" name="email" placeholder="email" id="emailid"><br>
     
     <span>first name</span>
-    <input type="text" placeholder="first name">
-    <input type="text" placeholder="last name"><br>
+    <input type="text" name="firstname" placeholder="first name" id="fname">
+    <input type="text" name="lastname" placeholder="last name" id="lname"><br>
     <span>password</span>
-    <input type="password" placeholder="password"><br>
+    <input type="password" name="password" placeholder="password" id="pass"><br>
      <button type="submit">submit</button>
     
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+$('form').on('submit',(e)=>{
+    e.preventDefault();
+
+    const emailid=$('#email').val().trim();
+    const fname=$('#fname').val().trim();
+    const lname=$('lname').val().trim();
+    const pass=$('pass').val().trim();
+
+    const data={
+        emailid,
+        fname,lname,pass
+    };
+
+    $.post('/form',data, function()
+    {
+        console.log('server recevied data!')
+    })
+})
+
+</script>
     
 </div>    
 </body>
