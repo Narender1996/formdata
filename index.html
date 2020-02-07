@@ -20,20 +20,46 @@
 <body>
 <div class="container">
 <h1>sign up form</h1>
-<form id="form" method="POST" action=>
+<form id="form" method="POST" >
     <span>EMAIL</span>
     <input type="email" name="email" placeholder="email" id="emailid"><br>
-    
-    <span>first name</span>
+       <span>first name</span>
     <input type="text" name="firstname" placeholder="first name" id="fname">
-    <input type="text" name="lastname" placeholder="last name" id="lname"><br>
-    <span>password</span>
-    <input type="password" name="password" placeholder="password" id="pass"><br>
-     <button type="submit">submit</button>
+    <span>last  name</span>
+    <input type="text" name="lastname" placeholder="last name" id="lname">
+    
+     <button type="submit" id="buttonid">submit</button>
     
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+   
+$('document').ready(()=>{
+     $('buttonid').on('click',()=>
+     {
+      $.ajax({
+          url: '/',
+          type:'POST',
+          success:function(response){
+              console.log('ok')
+          }
+      })
+     })  
+
+
+     /*
+    event.preventDefault();
+   
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3001/" ,
+            data: fetchdata,
+            contentType: "application/x-www-form-urlencoded" 
+            })
+        })
+    })
+*/
+   /* 
 
 $('form').on('submit',(e)=>{
     e.preventDefault();
@@ -53,9 +79,9 @@ $('form').on('submit',(e)=>{
         console.log('server recevied data!')
     })
 })
-
+*/
 </script>
-    
+
 </div>    
 </body>
 </html>
